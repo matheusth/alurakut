@@ -63,7 +63,7 @@ export default function Home() {
             </ul>
           </ProfileRelationsBoxWrapper>
           <ProfileRelationsBoxWrapper>
-            <h2 className="smallTitle">Amigos</h2>
+            <h2 className="smallTitle">Github Followers</h2>
             <ul>
               {followers.map(user=>(
                 <li key={user}>
