@@ -1,6 +1,6 @@
 # Alurakut
 Criado para imersão react da alura usando react e next.js
-[<img width='500px' src="https://alurakut-two-zeta.vercel.app/" />](https://alurakut-two-zeta.vercel.app/)
+[<img width='500px' src="./screenshot.png" />](https://alurakut-two-zeta.vercel.app/)
 
 ## Rodando o projeto
 
