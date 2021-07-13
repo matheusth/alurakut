@@ -3,7 +3,7 @@ import Box from '../src/components/Box';
 import { AlurakutMenu } from '../src/lib/AlurakurtCommons';
 import { ProfileRelationsBoxWrapper } from '../src/components/ProfileRelations';
 import { requestFollowers, requestFollowing } from '../src/utils/APIRequests';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 /*const Title = styled.h1`
   font-size: 50px;
@@ -27,14 +27,14 @@ export default function Home() {
   const [followers, setFollowers] = useState([]);
   const [following, setFollowing] = useState([]);
 
-  requestFollowing(githubUser).then(following => {
-    setFollowing(following);
-  });
-
-  requestFollowers(githubUser).then(followers => {
-    setFollowers(followers);
-  });
-
+  useEffect(() => {
+    requestFollowing(githubUser).then((result) => {
+      setFollowing(result);
+    });
+    requestFollowers(githubUser).then((result) => {
+      setFollowers(result);
+    });
+  }, []);
 
   return (
     <>
@@ -53,7 +53,7 @@ export default function Home() {
             </h2>
             <ul>
               {following.map((user) => (
-                <li key={user}>
+                <li key={user.login}>
                   <a href={user.url}>
                     <img src={user.avatar_url} />
                     <span>{user.login}</span>
@@ -65,8 +65,8 @@ export default function Home() {
           <ProfileRelationsBoxWrapper>
             <h2 className="smallTitle">Github Followers</h2>
             <ul>
-              {followers.map(user=>(
-                <li key={user}>
+              {followers.map((user) => (
+                <li key={user.login}>
                   <a href={user.url}>
                     <img src={user.avatar_url} />
                     <span>{user.login}</span>
